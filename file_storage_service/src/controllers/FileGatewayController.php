@@ -12,7 +12,20 @@ class FileGatewayController
      */
     public function save(Request $request): Response
     {
-        // TODO
+        // Get the uploaded file from the request
+        $uploadedFile = $request->files->get('image');
+
+        // Some basic validation
+        if (!$uploadedFile) {
+            return new Response('No file uploaded.');
+        }
+
+        // Move the uploaded file to the images/ directory
+        $destinationPath = __DIR__ . '/../../images/';
+        $uploadedFile->move($destinationPath, $uploadedFile->getClientOriginalName());
+
+        // Return a success response
+        return new Response('File saved successfully.');
     }
 
 }

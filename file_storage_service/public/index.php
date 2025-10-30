@@ -2,6 +2,10 @@
 
 require_once __DIR__.'/../vendor/autoload.php';
 
+use GuzzleHttp\Client as Client;
+$client = new Client();
+
+
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Controller\ArgumentResolver;
